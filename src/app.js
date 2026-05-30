@@ -32,6 +32,7 @@ const hrRoutes = require('./features/hr/hr.route');
 const reportsRoutes = require('./features/reports/reports.route');
 const settingsRoutes = require('./features/settings/settings.route');
 const approvalsRoutes = require('./features/approvals/approvals.route');
+const stateRoutes = require('./features/state/state.route');
 
 const app = express();
 
@@ -77,6 +78,7 @@ app.use('/api/hr', hrRoutes);
 app.use('/api/reports', reportsRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/approvals', approvalsRoutes);
+app.use('/api/state', stateRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
