@@ -26,38 +26,85 @@ const BRANCHES = [
   { branchCode: 'br_shop3', name: 'Shop 3 - Likasi', shortName: 'S3', cargoTypes: [], branchType: 'Branch', color: '#EC4899', icon: '🏪' },
 ];
 
-const CHART_OF_ACCOUNTS = [
-  // Assets
-  { code: '1001', name: 'Cash in Hand', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
-  { code: '1002', name: 'Bank - Main Account', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
-  { code: '1100', name: 'Accounts Receivable', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
-  { code: '1200', name: 'Inventory / Stock', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
-  { code: '1300', name: 'Prepaid Expenses', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: false },
-  { code: '1500', name: 'Fixed Assets', group: 'Non-Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: false },
-  // Liabilities
-  { code: '2001', name: 'Accounts Payable', group: 'Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: true },
-  { code: '2100', name: 'Tax Payable', group: 'Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: true },
-  { code: '2200', name: 'Salary Payable', group: 'Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: false },
-  { code: '2500', name: 'Long-term Loans', group: 'Non-Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: false },
-  // Equity
-  { code: '3001', name: 'Owner\'s Capital', group: 'Equity', primaryGroup: 'Equity', side: 'Credit', appearsIn: 'BS', isSystem: true },
-  { code: '3100', name: 'Retained Earnings', group: 'Equity', primaryGroup: 'Equity', side: 'Credit', appearsIn: 'BS', isSystem: true },
-  // Revenue
-  { code: '4001', name: 'Sales Revenue', group: 'Revenue', primaryGroup: 'Revenue', side: 'Credit', appearsIn: 'P&L', isSystem: true },
-  { code: '4100', name: 'Import Sales', group: 'Revenue', primaryGroup: 'Revenue', side: 'Credit', appearsIn: 'P&L', isSystem: false },
-  { code: '4200', name: 'Other Income', group: 'Revenue', primaryGroup: 'Revenue', side: 'Credit', appearsIn: 'P&L', isSystem: false },
-  // Expenses
-  { code: '5001', name: 'Cost of Goods Sold', group: 'Cost of Sales', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: true },
-  { code: '5100', name: 'Import Charges', group: 'Import Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-  { code: '5200', name: 'Freight & Logistics', group: 'Import Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-  { code: '5300', name: 'Salaries & Wages', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-  { code: '5400', name: 'Rent & Utilities', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-  { code: '5500', name: 'Marketing & Advertising', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-  { code: '5600', name: 'Bank Charges', group: 'Finance Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-  { code: '5700', name: 'Customs & Duties', group: 'Import Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-  { code: '5900', name: 'General & Admin Expenses', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
-];
+// const CHART_OF_ACCOUNTS = [
+//   // Assets
+//   { code: '1001', name: 'Cash in Hand', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
+//   { code: '1002', name: 'Bank - Main Account', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
+//   { code: '1100', name: 'Accounts Receivable', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
+//   { code: '1200', name: 'Inventory / Stock', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: true },
+//   { code: '1300', name: 'Prepaid Expenses', group: 'Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: false },
+//   { code: '1500', name: 'Fixed Assets', group: 'Non-Current Assets', primaryGroup: 'Assets', side: 'Debit', appearsIn: 'BS', isSystem: false },
+//   // Liabilities
+//   { code: '2001', name: 'Accounts Payable', group: 'Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: true },
+//   { code: '2100', name: 'Tax Payable', group: 'Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: true },
+//   { code: '2200', name: 'Salary Payable', group: 'Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: false },
+//   { code: '2500', name: 'Long-term Loans', group: 'Non-Current Liabilities', primaryGroup: 'Liabilities', side: 'Credit', appearsIn: 'BS', isSystem: false },
+//   // Equity
+//   { code: '3001', name: 'Owner\'s Capital', group: 'Equity', primaryGroup: 'Equity', side: 'Credit', appearsIn: 'BS', isSystem: true },
+//   { code: '3100', name: 'Retained Earnings', group: 'Equity', primaryGroup: 'Equity', side: 'Credit', appearsIn: 'BS', isSystem: true },
+//   // Revenue
+//   { code: '4001', name: 'Sales Revenue', group: 'Revenue', primaryGroup: 'Revenue', side: 'Credit', appearsIn: 'P&L', isSystem: true },
+//   { code: '4100', name: 'Import Sales', group: 'Revenue', primaryGroup: 'Revenue', side: 'Credit', appearsIn: 'P&L', isSystem: false },
+//   { code: '4200', name: 'Other Income', group: 'Revenue', primaryGroup: 'Revenue', side: 'Credit', appearsIn: 'P&L', isSystem: false },
+//   // Expenses
+//   { code: '5001', name: 'Cost of Goods Sold', group: 'Cost of Sales', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: true },
+//   { code: '5100', name: 'Import Charges', group: 'Import Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+//   { code: '5200', name: 'Freight & Logistics', group: 'Import Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+//   { code: '5300', name: 'Salaries & Wages', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+//   { code: '5400', name: 'Rent & Utilities', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+//   { code: '5500', name: 'Marketing & Advertising', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+//   { code: '5600', name: 'Bank Charges', group: 'Finance Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+//   { code: '5700', name: 'Customs & Duties', group: 'Import Costs', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+//   { code: '5900', name: 'General & Admin Expenses', group: 'Operating Expenses', primaryGroup: 'Expenses', side: 'Debit', appearsIn: 'P&L', isSystem: false },
+// ];
 
+const CHART_OF_ACCOUNTS = [
+  // ── Cash accounts (USD) ───────────────────────────────────────────────────
+  { legacyId:"acc_cash_ho",  name:"Cash HO $",       group:"Cash", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_cash_hd",  name:"Cash TXHD $",     group:"Cash", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true, branchId:"br_hd" },
+  { legacyId:"acc_cash_mtl", name:"Cash TXMTL $",    group:"Cash", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true, branchId:"br_mtl" },
+  { legacyId:"acc_cash_s1",  name:"Cash S1 $",       group:"Cash", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true, branchId:"br_shop1" },
+  { legacyId:"acc_cash_s2",  name:"Cash S2 $",       group:"Cash", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true, branchId:"br_shop2" },
+  { legacyId:"acc_cash_s3",  name:"Cash S3 $",       group:"Cash", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true, branchId:"br_shop3" },
+  // ── Cash accounts (CDF / FC) ──────────────────────────────────────────────
+  { legacyId:"acc_cash_ho_cdf",  name:"Cash HO FC",      group:"Cash-in-Hand", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit", openBal:0, openType:"Dr", isSystem:true, currency:"CDF" },
+  { legacyId:"acc_cash_hd_cdf",  name:"Cash TXHD FC",    group:"Cash-in-Hand", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit", openBal:0, openType:"Dr", isSystem:true, branchId:"br_hd",    currency:"CDF" },
+  { legacyId:"acc_cash_mtl_cdf", name:"Cash TXMTL FC",   group:"Cash-in-Hand", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit", openBal:0, openType:"Dr", isSystem:true, branchId:"br_mtl",   currency:"CDF" },
+  { legacyId:"acc_cash_s1_cdf",  name:"Cash S1 FC",      group:"Cash-in-Hand", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit", openBal:0, openType:"Dr", isSystem:true, branchId:"br_shop1", currency:"CDF" },
+  { legacyId:"acc_cash_s2_cdf",  name:"Cash S2 FC",      group:"Cash-in-Hand", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit", openBal:0, openType:"Dr", isSystem:true, branchId:"br_shop2", currency:"CDF" },
+  { legacyId:"acc_cash_s3_cdf",  name:"Cash S3 FC",      group:"Cash-in-Hand", primaryGroup:"Assets", type:"Assets", sub:"Current Assets", appearsIn:"BS", side:"Debit", openBal:0, openType:"Dr", isSystem:true, branchId:"br_shop3", currency:"CDF" },
+  // ── Bank ──────────────────────────────────────────────────────────────────
+  { legacyId:"acc_bankusd", name:"Bank Account - USD", group:"Bank", primaryGroup:"Assets", type:"Assets", sub:"Bank Accounts", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_bankcdf", name:"Bank Account - CDF", group:"Bank", primaryGroup:"Assets", type:"Assets", sub:"Bank Accounts", appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true, currency:"CDF" },
+  // ── Receivables / Payables / Stock ────────────────────────────────────────
+  { legacyId:"acc_debtors", name:"Accounts Receivable", group:"Debtors",   primaryGroup:"Assets",      type:"Assets",      sub:"Current Assets",      appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_stock",   name:"Stock / Inventory",   group:"Stock-in-Hand", primaryGroup:"Assets",  type:"Assets",      sub:"Current Assets",      appearsIn:"BS", side:"Debit",  openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_cred",    name:"Accounts Payable",    group:"Creditors", primaryGroup:"Liabilities", type:"Liabilities", sub:"Current Liabilities",  appearsIn:"BS", side:"Credit", openBal:0, openType:"Cr", isSystem:true },
+  { legacyId:"acc_tax",     name:"Tax Payable",         group:"Duties & Taxes", primaryGroup:"Liabilities", type:"Liabilities", sub:"Current Liabilities", appearsIn:"BS", side:"Credit", openBal:0, openType:"Cr", isSystem:true },
+  { legacyId:"acc_loan",    name:"Loans Payable",       group:"Loans",     primaryGroup:"Liabilities", type:"Liabilities", sub:"Long-Term Liabilities", appearsIn:"BS", side:"Credit", openBal:0, openType:"Cr", isSystem:true },
+  // ── Equity ────────────────────────────────────────────────────────────────
+  { legacyId:"acc_cap",  name:"Capital Account",       group:"Capital",  primaryGroup:"Equity", type:"Capital", sub:"Capital", appearsIn:"BS", side:"Credit", openBal:0, openType:"Cr", isSystem:true },
+  { legacyId:"acc_obe",  name:"Opening Balance Equity",group:"Reserves", primaryGroup:"Equity", type:"Capital", sub:"Capital", appearsIn:"BS", side:"Credit", openBal:0, openType:"Cr", isSystem:true },
+  // ── Income ────────────────────────────────────────────────────────────────
+  { legacyId:"acc_sales",   name:"Sales Revenue", group:"Sales Accounts",   primaryGroup:"Revenue", type:"Income", sub:"Direct Income",   appearsIn:"P&L", side:"Credit", openBal:0, openType:"Cr", isSystem:true },
+  { legacyId:"acc_otherin", name:"Other Income",  group:"Indirect Incomes", primaryGroup:"Revenue", type:"Income", sub:"Indirect Income", appearsIn:"P&L", side:"Credit", openBal:0, openType:"Cr", isSystem:true },
+  // ── FX Gain / Loss ────────────────────────────────────────────────────────
+  { legacyId:"acc_forex_gain", name:"Foreign Exchange Gain", group:"Indirect Income",  primaryGroup:"Revenue",   type:"Income",  sub:"Indirect Income",  appearsIn:"P&L", side:"Credit", openBal:0, openType:"Cr", isSystem:true, note:"Realized FX gains on CDF→USD conversions" },
+  { legacyId:"acc_forex_loss", name:"Foreign Exchange Loss", group:"Indirect Expenses",primaryGroup:"Expenses",  type:"Expense", sub:"Indirect Expenses", appearsIn:"P&L", side:"Debit",  openBal:0, openType:"Dr", isSystem:true, note:"Realized FX losses on CDF→USD conversions" },
+  // ── Direct Expenses ───────────────────────────────────────────────────────
+  { legacyId:"acc_cogs",     name:"Cost of Goods Sold",      group:"Direct Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Direct Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true, note:"COGS on goods sold" },
+  { legacyId:"acc_purch",    name:"Purchase",                group:"Purchase Accounts",primaryGroup:"Expenses", type:"Expense", sub:"Direct Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_duty",     name:"Import Duty",             group:"Direct Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Direct Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_customs",  name:"Customs Charges",         group:"Direct Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Direct Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_clearing", name:"Clearing Agent Charges",  group:"Direct Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Direct Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_freight",  name:"Freight / Transport",     group:"Direct Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Direct Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  // ── Indirect Expenses ─────────────────────────────────────────────────────
+  { legacyId:"acc_salary", name:"Salary & Wages",         group:"Indirect Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Indirect Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_rent",   name:"Rent",                   group:"Indirect Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Indirect Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_elec",   name:"Electricity & Utilities",group:"Indirect Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Indirect Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_bankch", name:"Bank Charges",           group:"Indirect Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Indirect Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+  { legacyId:"acc_other",  name:"Other Expenses",         group:"Indirect Expenses", primaryGroup:"Expenses", type:"Expense", sub:"Indirect Expenses", appearsIn:"P&L", side:"Debit", openBal:0, openType:"Dr", isSystem:true },
+];
 const seedUsers = async (branchMap) => {
   const usersData = [
     { name: 'Afshin Dhanani', email: 'afshin.dhanani@kingsgroupco.com', password: 'admin123', roleId: 'role_superadmin', businessMode: 'all', title: 'System Administrator', status: 'active' },
@@ -98,9 +145,19 @@ const seed = async () => {
   }
   logger.info(`Seeded ${BRANCHES.length} branches`);
 
+  // Drop legacy unique index on `code` if it exists (replaced by sparse index)
+  try {
+    await FinanceAccount.collection.dropIndex('code_1');
+    logger.info('Dropped old code_1 index on financeaccounts');
+  } catch (_) { /* index didn't exist — fine */ }
+
   // Seed chart of accounts
   for (const acc of CHART_OF_ACCOUNTS) {
-    await FinanceAccount.findOneAndUpdate({ code: acc.code }, acc, { upsert: true, new: true });
+    await FinanceAccount.findOneAndUpdate(
+      { legacyId: acc.legacyId },
+      { $set: { ...acc, code: acc.legacyId } },
+      { upsert: true, new: true }
+    );
   }
   logger.info(`Seeded ${CHART_OF_ACCOUNTS.length} chart of accounts`);
 
